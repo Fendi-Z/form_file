@@ -10,15 +10,15 @@
             <a class="nav-link {{ ($activeMenu == 'home') ? 'active' : '' }}" aria-current="page" href="{{ url('/') }}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ ($activeMenu == 'article') ? 'active' : '' }}" href="{{ url('/articles') }}">Article</a>
+            <a class="nav-link" href="">Second</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle {{ ($activeMenu == 'article_create' && 'article_edit') ? 'active' : '' }}" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Article
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item {{ ($activeMenu == 'article_create') ? 'active' : '' }}" href="{{ url('/articles/create') }}">Create</a></li>
+              {{-- <li><a class="dropdown-item {{ ($activeMenu == 'article_edit') ? 'active' : '' }}" href="{{ url('/articles/'. $article->id .'/edit') }}">Update</a></li> --}}
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+// use PDF;
 
 class ArticleController extends Controller
 {
@@ -21,9 +23,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $activeMenu = 'article_create';
-        
-        return view('articles.create', ['activeMenu' => $activeMenu]);
+        return view('articles.create');
     }
 
     /**
@@ -56,10 +56,8 @@ class ArticleController extends Controller
     public function edit(string $id)
     {
         $article = Article::find($id);
-
-        $activeMenu = 'article_edit';
-
-        return view('articles.edit', ['article' => $article, 'activeMenu' => $activeMenu]);
+        
+        return view('articles.edit', ['article' => $article]);
     }
 
     /**
@@ -88,5 +86,14 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         //
+    }
+
+    public function cetak_pdf()
+    {
+        $articles = Article::all();
+        // $pdf = Pdf::loadView('articles.articles_pdf', ['articles' => $articles]);
+        $pdf = Pdf::loadView('articles.articles_pdf', ['articles' => $articles]);
+        $pdf->setPaper('A4', 'Portrait');
+        return $pdf->stream('articles.pdf');
     }
 }

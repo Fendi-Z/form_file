@@ -18,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [WelcomeController::class, 'index']);
 
 Route::resource('/articles', ArticleController::class);
+
+Route::get('/cetak_pdf', [ArticleController::class, 'cetak_pdf']);

@@ -8,11 +8,6 @@ class WelcomeController extends Controller
 {
     public function index() 
     {
-        $activeMenu = 'home';
-
-        return view('welcome', [
-                'activeMenu' => $activeMenu
-            ]
-        );
+        return view('welcome');
     }
 }
